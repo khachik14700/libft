@@ -6,7 +6,7 @@
 #    By: kkhachat <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 21:07:25 by kkhachat          #+#    #+#              #
-#    Updated: 2026/01/27 21:13:44 by kkhachat         ###   ########.fr        #
+#    Updated: 2026/01/29 18:17:27 by kkhachat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,3 +35,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
