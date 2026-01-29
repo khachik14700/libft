@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkhachat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/26 20:45:00 by kkhachat          #+#    #+#             */
-/*   Updated: 2026/01/29 14:55:22 by kkhachat         ###   ########.fr       */
+/*   Created: 2026/01/29 16:32:48 by kkhachat          #+#    #+#             */
+/*   Updated: 2026/01/29 16:40:49 by kkhachat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	unsigned char	*ndest;
-	unsigned char	*nsrc;
-	size_t			i;
+	t_list	*next_node;
+	t_list	*current;
 
-	if (!dest || !src)
-		return ((void *)0);
-	ndest = (unsigned char *)dest;
-	nsrc = (unsigned char *)src;
-	i = 0;
-	while (i < n)
+	if (lst == NULL || *lst == NULL)
+		return ;
+	current = *lst;
+	while (current)
 	{
-		ndest[i] = nsrc[i];
-		i++;
+		next_node = current->next;
+		if (del != NULL)
+			del(current->content);
+		free(current);
+		current = next_node;
 	}
-	return (dest);
+	*lst = NULL;
 }
